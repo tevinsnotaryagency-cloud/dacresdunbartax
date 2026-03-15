@@ -50,20 +50,6 @@ body {
   opacity: 1;
 }
 
-/* ─── LOADER ─── */
-#page-loader {
-  position: fixed;
-  inset: 0;
-  background: var(--navy);
-  z-index: 99999;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
-}
-#page-loader.hidden {
   opacity: 0;
   visibility: hidden;
 }
