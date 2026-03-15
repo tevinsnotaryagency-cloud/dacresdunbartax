@@ -28,11 +28,11 @@ body {
   background: var(--cream);
   font-size: 16px;
   line-height: 1.7;
-  opacity: 0;
-  animation: fadeInPage 0.45s ease forwards;
+  animation: fadeInPage 0.4s ease both;
 }
 
 @keyframes fadeInPage {
+  from { opacity: 0; }
   to { opacity: 1; }
 }
 
