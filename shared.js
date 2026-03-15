@@ -1,0 +1,123 @@
+// ═══════════════════════════════════════
+//  DACRES & DUNBAR — Shared Components
+// ═══════════════════════════════════════
+
+function getHeader(activePage) {
+  return `
+  <div id="transition-overlay"></div>
+  <div id="page-loader">
+    <div class="loader-logo-name">Dacres &amp; Dunbar<br><span>Tax Service</span></div>
+    <div class="loader-tagline">Professional Tax Preparation</div>
+    <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+  </div>
+
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-name">Dacres &amp; Dunbar Tax Service</span>
+        <span class="logo-tagline">Professional Tax Preparation</span>
+      </a>
+      <button class="hamburger" id="menuToggle" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="mainNav">
+        <a href="index.html" ${activePage==='home'?'class="active"':''}>Home</a>
+        <a href="services.html" ${activePage==='services'?'class="active"':''}>Services</a>
+        <a href="about.html" ${activePage==='about'?'class="active"':''}>About</a>
+        <a href="testimonials.html" ${activePage==='testimonials'?'class="active"':''}>Testimonials</a>
+        <a href="contact.html" ${activePage==='contact'?'class="active"':''}>Contact</a>
+        <a href="https://calendly.com/ddbacctgtax/30min" target="_blank" class="btn-book-header">Book Appointment</a>
+      </nav>
+    </div>
+  </header>`;
+}
+
+function getFooter() {
+  return `
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand-name">Dacres &amp; Dunbar Tax Service</div>
+          <div class="footer-brand-tag">Reliable. Accurate. Trusted.</div>
+          <a href="tel:9548952868" class="footer-contact-item">📞 (954) 895-2868</a>
+          <a href="mailto:alicia.dunbar@hotmail.com" class="footer-contact-item">✉️ alicia.dunbar@hotmail.com</a>
+          <a href="https://calendly.com/ddbacctgtax/30min" target="_blank" class="footer-book-btn">📅 Book an Appointment</a>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="testimonials.html">Testimonials</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html">Individual Tax Prep</a></li>
+            <li><a href="services.html">Business Tax Prep</a></li>
+            <li><a href="services.html">Tax Planning</a></li>
+            <li><a href="services.html">W-2 &amp; 1099 Filings</a></li>
+            <li><a href="services.html">Filing Extensions</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="sms-policy.html">SMS Messaging Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Dacres &amp; Dunbar Tax Service. All rights reserved.</span>
+        <span>
+          <a href="terms.html">Terms</a> &nbsp;·&nbsp;
+          <a href="privacy.html">Privacy</a> &nbsp;·&nbsp;
+          <a href="sms-policy.html">SMS Policy</a>
+        </span>
+      </div>
+    </div>
+  </footer>`;
+}
+
+function initShared() {
+  // Inject header & footer
+  document.getElementById('header-slot').innerHTML = getHeader(document.body.dataset.page);
+  document.getElementById('footer-slot').innerHTML = getFooter();
+
+  // Hide loader after page ready
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('page-loader').classList.add('hidden');
+    }, 1200);
+  });
+
+  // Hamburger menu
+  document.addEventListener('click', function(e) {
+    const toggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('mainNav');
+    if (!nav || !toggle) return;
+    if (toggle.contains(e.target)) {
+      nav.classList.toggle('open');
+    } else if (!nav.contains(e.target)) {
+      nav.classList.remove('open');
+    }
+  });
+
+  // Page transition on internal links
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    if (!href || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel') || href.startsWith('#')) return;
+    e.preventDefault();
+    const overlay = document.getElementById('transition-overlay');
+    overlay.classList.add('fade-out');
+    setTimeout(() => { window.location.href = href; }, 300);
+  });
+}

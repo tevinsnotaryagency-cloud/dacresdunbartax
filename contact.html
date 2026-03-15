@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Dacres & Dunbar Tax Service</title>
+<meta name="description" content="Contact Dacres & Dunbar Tax Service or book an appointment online.">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="contact">
+<div id="header-slot"></div>
+
+<div class="page-hero">
+  <h1>Contact Us</h1>
+  <p>We're here to help — reach out or book an appointment today</p>
+</div>
+
+<section>
+  <div class="section-inner">
+    <div class="contact-layout">
+
+      <!-- Info -->
+      <div class="contact-info">
+        <div class="contact-block">
+          <div class="contact-block-icon">📞</div>
+          <div>
+            <div class="contact-block-label">Phone</div>
+            <div class="contact-block-value"><a href="tel:9548952868">(954) 895-2868</a></div>
+          </div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-block-icon">✉️</div>
+          <div>
+            <div class="contact-block-label">Email</div>
+            <div class="contact-block-value"><a href="/cdn-cgi/l/email-protection#a9c8c5c0cac0c887cddcc7cbc8dbe9c1c6ddc4c8c0c587cac6c4"><span class="__cf_email__" data-cfemail="06676a6f656f6728627368646774466e69726b676f6a2865696b">[email&#160;protected]</span></a></div>
+          </div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-block-icon">📅</div>
+          <div>
+            <div class="contact-block-label">Book Online</div>
+            <div class="contact-block-value">
+              <a href="https://calendly.com/ddbacctgtax/30min" target="_blank">Schedule a 30-Min Consultation →</a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-block-icon">🕐</div>
+          <div>
+            <div class="contact-block-label">Business Hours</div>
+            <div class="hours-grid" style="margin-top:10px;">
+              <span class="hours-day">Mon–Wed</span><span>9AM – 6PM</span>
+              <span class="hours-day">Thu–Fri</span><span>9AM – 8PM</span>
+              <span class="hours-day">Saturday</span><span>9AM – 2PM</span>
+              <span class="hours-day">Sunday</span><span>Closed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="form-card">
+        <h3>Send Us a Message</h3>
+        <p class="form-subtitle">Fill out the form below and we'll get back to you promptly.</p>
+
+        <form id="contactForm" onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label for="fullName">Full Name *</label>
+            <input type="text" id="fullName" name="fullName" required placeholder="Your full name">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" name="phone" required placeholder="(555) 000-0000">
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required placeholder="you@email.com">
+          </div>
+          <div class="form-group">
+            <label for="message">Message / What do you need help with? *</label>
+            <textarea id="message" name="message" required placeholder="Describe your tax situation or question..."></textarea>
+          </div>
+
+          <div class="sms-consent-box">
+            <p>By providing your phone number and submitting a form on this website, you agree to receive SMS (text) messages from Dacres &amp; Dunbar Tax Service. These messages may include appointment reminders, service updates, requests for information, and customer support communications. Message frequency may vary. Message and data rates may apply. You may opt out at any time by replying STOP to any text message. Reply HELP for assistance. Your consent is not a condition of purchase.</p>
+          </div>
+
+          <div class="checkbox-row">
+            <input type="checkbox" id="smsConsent" name="smsConsent" required>
+            <label for="smsConsent">I consent to receive SMS messages from Dacres &amp; Dunbar Tax Service regarding appointments, services, and important updates. Message and data rates may apply. I understand I can opt out at any time by replying STOP.</label>
+          </div>
+
+          <p class="form-legal">By submitting this form, you agree to our <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a>.</p>
+
+          <button type="submit" class="btn-submit">Send Message</button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          ✅ Thank you! Your message has been received. We'll be in touch within one business day.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Calendly -->
+<div class="calendly-section">
+  <div class="section-inner text-center" style="margin-bottom:32px;">
+    <p class="section-label">Online Scheduling</p>
+    <h2 class="section-title">Book a 30-Minute Tax Consultation</h2>
+    <p class="section-subtitle" style="margin:0 auto;">Choose a convenient time and book directly with Alicia Dunbar.</p>
+  </div>
+  <div class="calendly-wrapper">
+    <div class="calendly-header">
+      <h3>📅 Schedule Your Appointment</h3>
+      <p>30-minute consultation with Alicia Dunbar · Dacres &amp; Dunbar Tax Service</p>
+    </div>
+    <div class="calendly-iframe-wrap">
+      <iframe src="https://calendly.com/ddbacctgtax/30min?embed_type=Inline" title="Schedule a tax consultation" loading="lazy" style="width:100%;min-height:650px;border:none;display:block;"></iframe>
+    </div>
+  </div>
+</div>
+
+<div id="footer-slot"></div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="shared.js"></script>
+<script>
+  initShared();
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (!document.getElementById('smsConsent').checked) {
+      alert('Please check the SMS consent box to submit.');
+      return;
+    }
+    const name = document.getElementById('fullName').value;
+    const phone = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
+    const msg = document.getElementById('message').value;
+    const subject = encodeURIComponent('New Contact Form Submission – Dacres & Dunbar Tax Service');
+    const body = encodeURIComponent(`New inquiry from website:\n\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\n\nMessage:\n${msg}\n\n---\nSMS Consent: Yes`);
+ 
