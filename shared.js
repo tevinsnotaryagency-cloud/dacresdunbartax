@@ -4,13 +4,6 @@
 
 function getHeader(activePage) {
   return `
-  <div id="transition-overlay"></div>
-  <div id="page-loader">
-    <div class="loader-logo-name">Dacres &amp; Dunbar<br><span>Tax Service</span></div>
-    <div class="loader-tagline">Professional Tax Preparation</div>
-    <div class="loader-bar"><div class="loader-bar-fill"></div></div>
-  </div>
-
   <header>
     <div class="header-inner">
       <a href="index.html" class="logo">
@@ -86,33 +79,15 @@ function getFooter() {
 }
 
 function initShared() {
-  // Inject header & footer immediately (don't wait for load event)
+  // Inject header & footer immediately
   const headerSlot = document.getElementById('header-slot');
   const footerSlot = document.getElementById('footer-slot');
   if (headerSlot) headerSlot.innerHTML = getHeader(document.body.dataset.page);
   if (footerSlot) footerSlot.innerHTML = getFooter();
 
-  // Fix footer year dynamically
+  // Dynamic year
   const yearEl = document.getElementById('footer-year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-  // Hide loader — use both load event AND a hard fallback timeout
-  // This prevents the black screen when load event doesn't fire
-  function hideLoader() {
-    const loader = document.getElementById('page-loader');
-    if (loader) loader.classList.add('hidden');
-  }
-
-  // Always hide after 1.5s max no matter what
-  setTimeout(hideLoader, 1500);
-
-  // Also hide as soon as DOM is interactive
-  if (document.readyState === 'complete' || document.readyState === 'interactive') {
-    setTimeout(hideLoader, 400);
-  } else {
-    document.addEventListener('DOMContentLoaded', () => setTimeout(hideLoader, 400));
-    window.addEventListener('load', () => setTimeout(hideLoader, 200));
-  }
 
   // Hamburger menu
   document.addEventListener('click', function(e) {
@@ -124,17 +99,5 @@ function initShared() {
     } else if (!nav.contains(e.target)) {
       nav.classList.remove('open');
     }
-  });
-
-  // Page transition on internal links
-  document.addEventListener('click', function(e) {
-    const link = e.target.closest('a');
-    if (!link) return;
-    const href = link.getAttribute('href');
-    if (!href || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel') || href.startsWith('#')) return;
-    e.preventDefault();
-    const overlay = document.getElementById('transition-overlay');
-    if (overlay) overlay.classList.add('fade-out');
-    setTimeout(() => { window.location.href = href; }, 300);
   });
 }
