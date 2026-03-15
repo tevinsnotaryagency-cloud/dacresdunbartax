@@ -74,7 +74,7 @@ function getFooter() {
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 Dacres &amp; Dunbar Tax Service. All rights reserved.</span>
+        <span>© <span id="footer-year">2025</span> Dacres &amp; Dunbar Tax Service. All rights reserved.</span>
         <span>
           <a href="terms.html">Terms</a> &nbsp;·&nbsp;
           <a href="privacy.html">Privacy</a> &nbsp;·&nbsp;
@@ -86,16 +86,33 @@ function getFooter() {
 }
 
 function initShared() {
-  // Inject header & footer
-  document.getElementById('header-slot').innerHTML = getHeader(document.body.dataset.page);
-  document.getElementById('footer-slot').innerHTML = getFooter();
+  // Inject header & footer immediately (don't wait for load event)
+  const headerSlot = document.getElementById('header-slot');
+  const footerSlot = document.getElementById('footer-slot');
+  if (headerSlot) headerSlot.innerHTML = getHeader(document.body.dataset.page);
+  if (footerSlot) footerSlot.innerHTML = getFooter();
 
-  // Hide loader after page ready
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      document.getElementById('page-loader').classList.add('hidden');
-    }, 1200);
-  });
+  // Fix footer year dynamically
+  const yearEl = document.getElementById('footer-year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // Hide loader — use both load event AND a hard fallback timeout
+  // This prevents the black screen when load event doesn't fire
+  function hideLoader() {
+    const loader = document.getElementById('page-loader');
+    if (loader) loader.classList.add('hidden');
+  }
+
+  // Always hide after 1.5s max no matter what
+  setTimeout(hideLoader, 1500);
+
+  // Also hide as soon as DOM is interactive
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    setTimeout(hideLoader, 400);
+  } else {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(hideLoader, 400));
+    window.addEventListener('load', () => setTimeout(hideLoader, 200));
+  }
 
   // Hamburger menu
   document.addEventListener('click', function(e) {
@@ -117,7 +134,7 @@ function initShared() {
     if (!href || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel') || href.startsWith('#')) return;
     e.preventDefault();
     const overlay = document.getElementById('transition-overlay');
-    overlay.classList.add('fade-out');
+    if (overlay) overlay.classList.add('fade-out');
     setTimeout(() => { window.location.href = href; }, 300);
   });
 }
