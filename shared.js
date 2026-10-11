@@ -7,8 +7,7 @@ function getHeader(activePage) {
   <header>
     <div class="header-inner">
       <a href="index.html" class="logo">
-        <span class="logo-name">Dacres &amp; Dunbar Tax Service</span>
-        <span class="logo-tagline">Professional Tax Preparation</span>
+        <img src="logo.png" alt="Dacres and Dunbar Tax Service Inc" style="height:56px;width:auto;display:block;">
       </a>
       <button class="hamburger" id="menuToggle" aria-label="Open menu">
         <span></span><span></span><span></span>
