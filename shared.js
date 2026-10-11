@@ -30,7 +30,7 @@ function getFooter() {
     <div class="footer-inner">
       <div class="footer-top">
         <div>
-          <div class="footer-brand-name">Dacres &amp; Dunbar Tax Service</div>
+          <div class="footer-brand-name">Dacres &amp; Dunbar Tax Service INC</div>
           <div class="footer-brand-tag">Reliable. Accurate. Trusted.</div>
           <a href="tel:9548952868" class="footer-contact-item">📞 (954) 895-2868</a>
           <a href="mailto:alicia.dunbar@hotmail.com" class="footer-contact-item">✉️ alicia.dunbar@hotmail.com</a>
@@ -66,7 +66,7 @@ function getFooter() {
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© <span id="footer-year">2025</span> Dacres &amp; Dunbar Tax Service. All rights reserved.</span>
+        <span>© <span id="footer-year">2025</span> Dacres &amp; Dunbar Tax Service INC. All rights reserved.</span>
         <span>
           <a href="terms.html">Terms</a> &nbsp;·&nbsp;
           <a href="privacy.html">Privacy</a> &nbsp;·&nbsp;
